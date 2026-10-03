@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `Jev.TypeSafe.Unofficial.Extensions`: `AddTypeSafeClient` overloads for `IServiceCollection` with `IHttpClientFactory`, `IConfiguration` binding, and container-supplied logging and time. Targets `netstandard2.0`, `net8.0`, `net9.0` and `net10.0`.
+
 ## [0.1.0-preview.1]
 
 First preview. Tracks upstream `@typesafe-ai/sdk` **0.6.0**.

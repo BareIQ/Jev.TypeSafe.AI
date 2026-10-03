@@ -38,7 +38,9 @@ jobs:
           echo "VERSION=$version" >> "$GITHUB_ENV"
       - run: dotnet build -c Release -p:Version=$VERSION
       - run: dotnet test --project tests/Jev.TypeSafe.Tests -c Release --no-build
+      - run: dotnet test --project tests/Jev.TypeSafe.Extensions.Tests -c Release --no-build
       - run: dotnet pack src/Jev.TypeSafe -c Release --no-build -p:Version=$VERSION -o artifacts
+      - run: dotnet pack src/Jev.TypeSafe.Extensions -c Release --no-build -p:Version=$VERSION -o artifacts
       - name: Authenticate to NuGet (trusted publishing)
         id: login
         uses: NuGet/login@v1

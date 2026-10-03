@@ -4,8 +4,10 @@
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Jev.TypeSafe/Jev.TypeSafe.csproj" />
+    <Project Path="src/Jev.TypeSafe.Extensions/Jev.TypeSafe.Extensions.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Jev.TypeSafe.Tests/Jev.TypeSafe.Tests.csproj" />
+    <Project Path="tests/Jev.TypeSafe.Extensions.Tests/Jev.TypeSafe.Extensions.Tests.csproj" />
   </Folder>
 </Solution>

@@ -28,6 +28,7 @@ jobs:
       - run: dotnet build -c Release
       # The test project also targets net48 on Windows only (see its csproj).
       - run: dotnet test --project tests/Jev.TypeSafe.Tests -c Release --no-build
+      - run: dotnet test --project tests/Jev.TypeSafe.Extensions.Tests -c Release --no-build
 
   pack:
     name: Pack
@@ -39,13 +40,18 @@ jobs:
         with:
           global-json-file: global.json
       - run: dotnet pack src/Jev.TypeSafe -c Release -o artifacts
-      - name: Verify package version matches the project version
+      - run: dotnet pack src/Jev.TypeSafe.Extensions -c Release -o artifacts
+      - name: Verify package versions match the project versions
         run: |
-          pkg_version=$(ls artifacts/Jev.TypeSafe.Unofficial.*.nupkg | sed -E 's#.*/Jev\.TypeSafe\.Unofficial\.(.*)\.nupkg#\1#')
-          src_version=$(grep -oPm1 '(?<=<Version>)[^<]+' src/Jev.TypeSafe/Jev.TypeSafe.csproj)
-          echo "package=$pkg_version csproj=$src_version"
-          [ "$pkg_version" = "$src_version" ] || { echo "Version mismatch"; exit 1; }
-      - uses: actions/upload-artifact@v4
+          check() {
+            id="$1"; csproj="$2"
+            pkg_version=$(ls artifacts/"$id".*.nupkg | grep -E "/$id\.[0-9]" | sed -E "s#.*/$id\.(.*)\.nupkg#\1#")
+            src_version=$(grep -oPm1 '(?<=<Version>)[^<]+' "$csproj")
+            echo "$id package=$pkg_version csproj=$src_version"
+            [ "$pkg_version" = "$src_version" ] || { echo "Version mismatch for $id"; exit 1; }
+          }
+          check Jev.TypeSafe.Unofficial src/Jev.TypeSafe/Jev.TypeSafe.csproj
+          check Jev.TypeSafe.Unofficial.Extensions src/Jev.TypeSafe.Extensions/Jev.TypeSafe.Extensions.csproj      - uses: actions/upload-artifact@v4
         with:
           name: nuget-packages
           path: artifacts/*

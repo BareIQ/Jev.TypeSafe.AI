@@ -205,14 +205,17 @@ using var client = new TypeSafeClient(new TypeSafeClientOptions { ApiKey = "test
 
 ## Dependency injection
 
-The SDK has no DI package; register it yourself. The client is thread-safe, so a singleton is right:
+Install the optional `Jev.TypeSafe.Unofficial.Extensions` package for `Microsoft.Extensions.DependencyInjection` support (see its [README](src/Jev.TypeSafe.Extensions/README.md)):
 
-```csharp
-services.AddSingleton<ITypeSafeClient>(sp => new TypeSafeClient(
-    new TypeSafeClientOptions { LoggerFactory = sp.GetRequiredService<ILoggerFactory>() }));
+```sh
+dotnet add package Jev.TypeSafe.Unofficial.Extensions --prerelease
 ```
 
-When you pass your own `HttpClient`, you own it; keep its `Timeout` at least as long as the per-attempt timeout.
+```csharp
+services.AddTypeSafeClient(options => options.DefaultModel = "jev-latest"); // ApiKey falls back to TYPESAFE_API_KEY
+```
+
+Without the extensions package, construct the client yourself and register it as a singleton; it is thread-safe. When you pass your own `HttpClient`, you own it; keep its `Timeout` at least as long as the per-attempt timeout.
 
 ## Versioning and upstream
 

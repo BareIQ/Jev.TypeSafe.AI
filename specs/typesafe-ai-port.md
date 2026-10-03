@@ -31,7 +31,7 @@ Where upstream behavior is **observable on the wire or by the caller** (payloads
 6. **Broad reach**: one `netstandard2.0` build (.NET Framework 4.6.2+, .NET Core 2.0+, .NET 5–10+, Mono, Unity, Xamarin/MAUI).
 
 ### Non-goals
-- Dependency-injection integration packages (`AddTypeSafeClient`, `IHttpClientFactory` helpers). The client is still **DI-friendly**: it has plain constructor injection and an interface.
+- DI integration in the core package. It lives in the separate `Jev.TypeSafe.Unofficial.Extensions` package (decision 16); the core client stays DI-friendly with plain constructor injection and an interface.
 - Extra target frameworks (`net8.0` etc.) and trimming/AOT annotations.
 - Streaming, or endpoints beyond upstream (`GET /v1/models`, `POST /v1/systemone`).
 - A response-size limit (upstream has none).
@@ -852,3 +852,4 @@ Console.WriteLine(result.Answers.Get(category).Choice);
 | 13 | Test runner | xUnit v3 on Microsoft.Testing.Platform; dotnet test opts in via global.json (the .NET 10 SDK no longer supports the VSTest path for MTP projects) |
 | 14 | Already-cancelled token | The SDK checks the token before sending, so a custom HttpMessageHandler that ignores tokens never receives the request (upstream etch behaves the same) |
 | 15 | JSON escaping | Request bodies and logged JSON use the relaxed encoder, so non-ASCII text in the basic multilingual plane is not escaped (as JSON.stringify does); characters outside it are still escaped as surrogate pairs |
+| 16 | DI integration | Separate package `Jev.TypeSafe.Unofficial.Extensions` (folder `src/Jev.TypeSafe.Extensions`), targeting `netstandard2.0;net8.0;net9.0;net10.0`. `AddTypeSafeClient` overloads in the `Microsoft.Extensions.DependencyInjection` namespace return `IHttpClientBuilder`; singleton client on an `IHttpClientFactory` client with an infinite `HttpClient.Timeout`; options from `IConfiguration` then delegates; `ILoggerFactory` and `TimeProvider` from the container. Released with the same tag and version as the core. Out of scope: named/keyed clients, `ValidateOnStart`. |
