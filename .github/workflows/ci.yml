@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build-test:
+    name: Build and test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet build -c Release
+      # The test project also targets net48 on Windows only (see its csproj).
+      - run: dotnet test --project tests/Jev.TypeSafe.Tests -c Release --no-build
+
+  pack:
+    name: Pack
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet pack src/Jev.TypeSafe -c Release -o artifacts
+      - name: Verify package version matches the project version
+        run: |
+          pkg_version=$(ls artifacts/Jev.TypeSafe.Unofficial.*.nupkg | sed -E 's#.*/Jev\.TypeSafe\.Unofficial\.(.*)\.nupkg#\1#')
+          src_version=$(grep -oPm1 '(?<=<Version>)[^<]+' src/Jev.TypeSafe/Jev.TypeSafe.csproj)
+          echo "package=$pkg_version csproj=$src_version"
+          [ "$pkg_version" = "$src_version" ] || { echo "Version mismatch"; exit 1; }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/*
+          if-no-files-found: error

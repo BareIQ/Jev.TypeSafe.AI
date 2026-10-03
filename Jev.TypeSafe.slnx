@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/examples/">
+    <Project Path="examples/Demo/Demo.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Jev.TypeSafe/Jev.TypeSafe.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Jev.TypeSafe.Tests/Jev.TypeSafe.Tests.csproj" />
+  </Folder>
+</Solution>

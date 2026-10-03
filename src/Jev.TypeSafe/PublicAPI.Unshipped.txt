@@ -1,0 +1,316 @@
+#nullable enable
+abstract TypeSafe.AI.Answer.Type.get -> string!
+abstract TypeSafe.AI.Question.Type.get -> TypeSafe.AI.QuestionType
+const TypeSafe.AI.SdkInfo.UpstreamVersion = "0.6.0" -> string!
+const TypeSafe.AI.TypeSafeEnvironmentVariables.ApiKey = "TYPESAFE_API_KEY" -> string!
+const TypeSafe.AI.TypeSafeEnvironmentVariables.BaseUrl = "TYPESAFE_BASE_URL" -> string!
+const TypeSafe.AI.TypeSafeEnvironmentVariables.DefaultModel = "TYPESAFE_DEFAULT_MODEL" -> string!
+const TypeSafe.AI.TypeSafeEnvironmentVariables.LogLevel = "TYPESAFE_LOG_LEVEL" -> string!
+override TypeSafe.AI.ChoiceAnswer.Type.get -> string!
+override TypeSafe.AI.ChoiceQuestion.Type.get -> TypeSafe.AI.QuestionType
+override TypeSafe.AI.Entry.Equals(object? obj) -> bool
+override TypeSafe.AI.Entry.GetHashCode() -> int
+override TypeSafe.AI.Entry.ToString() -> string!
+override TypeSafe.AI.NoulAnswer.Type.get -> string!
+override TypeSafe.AI.NoulQuestion.Type.get -> TypeSafe.AI.QuestionType
+override TypeSafe.AI.QuestionKey<TAnswer>.Equals(object? obj) -> bool
+override TypeSafe.AI.QuestionKey<TAnswer>.GetHashCode() -> int
+override TypeSafe.AI.QuestionKey<TAnswer>.ToString() -> string!
+override TypeSafe.AI.RetryPolicy.Equals(object? obj) -> bool
+override TypeSafe.AI.RetryPolicy.GetHashCode() -> int
+override TypeSafe.AI.RetryPolicy.ToString() -> string!
+override TypeSafe.AI.ScoreAnswer.Type.get -> string!
+override TypeSafe.AI.ScoreQuestion.Type.get -> TypeSafe.AI.QuestionType
+override TypeSafe.AI.TypeSafeClient.ToString() -> string!
+override TypeSafe.AI.TypeSafeClientOptions.ToString() -> string!
+override TypeSafe.AI.UnknownAnswer.Type.get -> string!
+static TypeSafe.AI.ChoiceCriteria.FromLabels(params string![]! labels) -> TypeSafe.AI.ChoiceCriteria!
+static TypeSafe.AI.Entry.FromJson(System.Text.Json.JsonElement element) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.FromJson(System.Text.Json.Nodes.JsonNode? node) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.FromObject<T>(T value, System.Text.Json.JsonSerializerOptions? options) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.FromObject<T>(T value, System.Text.Json.Serialization.Metadata.JsonTypeInfo<T>! typeInfo) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.FromObject<T>(T value) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.FromText(string? text) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.implicit operator TypeSafe.AI.Entry(string? text) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.implicit operator TypeSafe.AI.Entry(System.Text.Json.Nodes.JsonArray? value) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.implicit operator TypeSafe.AI.Entry(System.Text.Json.Nodes.JsonObject? value) -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.Null.get -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.Omitted.get -> TypeSafe.AI.Entry
+static TypeSafe.AI.Entry.operator !=(TypeSafe.AI.Entry left, TypeSafe.AI.Entry right) -> bool
+static TypeSafe.AI.Entry.operator ==(TypeSafe.AI.Entry left, TypeSafe.AI.Entry right) -> bool
+static TypeSafe.AI.Question.Choice(TypeSafe.AI.Entry instructions, TypeSafe.AI.ChoiceCriteria! criteria) -> TypeSafe.AI.ChoiceQuestion!
+static TypeSafe.AI.Question.Choice<TEnum>(TypeSafe.AI.Entry instructions, System.Collections.Generic.IReadOnlyDictionary<TEnum, TypeSafe.AI.Entry>! descriptions) -> TypeSafe.AI.ChoiceQuestion<TEnum>!
+static TypeSafe.AI.Question.Choice<TEnum>(TypeSafe.AI.Entry instructions) -> TypeSafe.AI.ChoiceQuestion<TEnum>!
+static TypeSafe.AI.Question.Noul(TypeSafe.AI.Entry instructions = default(TypeSafe.AI.Entry), TypeSafe.AI.NoulCriteria? criteria = null) -> TypeSafe.AI.NoulQuestion!
+static TypeSafe.AI.Question.Score(TypeSafe.AI.Entry instructions, params TypeSafe.AI.Entry[]! criteria) -> TypeSafe.AI.ScoreQuestion!
+static TypeSafe.AI.Question.Score(TypeSafe.AI.Entry instructions, TypeSafe.AI.ScoreCriteria! criteria) -> TypeSafe.AI.ScoreQuestion!
+static TypeSafe.AI.QuestionKey<TAnswer>.operator !=(TypeSafe.AI.QuestionKey<TAnswer!> left, TypeSafe.AI.QuestionKey<TAnswer!> right) -> bool
+static TypeSafe.AI.QuestionKey<TAnswer>.operator ==(TypeSafe.AI.QuestionKey<TAnswer!> left, TypeSafe.AI.QuestionKey<TAnswer!> right) -> bool
+static TypeSafe.AI.RetryPolicy.Default.get -> TypeSafe.AI.RetryPolicy!
+static TypeSafe.AI.RetryPolicy.None.get -> TypeSafe.AI.RetryPolicy!
+static TypeSafe.AI.RetryPolicy.operator !=(TypeSafe.AI.RetryPolicy? left, TypeSafe.AI.RetryPolicy? right) -> bool
+static TypeSafe.AI.RetryPolicy.operator ==(TypeSafe.AI.RetryPolicy? left, TypeSafe.AI.RetryPolicy? right) -> bool
+static TypeSafe.AI.ScoreCriteria.FromEntries(params TypeSafe.AI.Entry[]! descriptions) -> TypeSafe.AI.ScoreCriteria!
+static TypeSafe.AI.ScoreCriteria.FromTexts(params string![]! descriptions) -> TypeSafe.AI.ScoreCriteria!
+static TypeSafe.AI.ScoreCriteria.implicit operator TypeSafe.AI.ScoreCriteria!(string![]! descriptions) -> TypeSafe.AI.ScoreCriteria!
+static TypeSafe.AI.ScoreCriteria.implicit operator TypeSafe.AI.ScoreCriteria!(TypeSafe.AI.Entry[]! descriptions) -> TypeSafe.AI.ScoreCriteria!
+static TypeSafe.AI.SdkInfo.Version.get -> string!
+static TypeSafe.AI.Testing.TypeSafeModelFactory.ApiResponse<T>(T value, TypeSafe.AI.RawResponse? response = null) -> TypeSafe.AI.ApiResponse<T>!
+static TypeSafe.AI.Testing.TypeSafeModelFactory.ChoiceAnswer(string! choice, double confidence, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, double>>! probabilities) -> TypeSafe.AI.ChoiceAnswer!
+static TypeSafe.AI.Testing.TypeSafeModelFactory.ModelCard(string! name, string! description, string! releaseDate, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, System.Text.Json.JsonElement>>? additionalProperties = null) -> TypeSafe.AI.ModelCard!
+static TypeSafe.AI.Testing.TypeSafeModelFactory.NoulAnswer(double noul) -> TypeSafe.AI.NoulAnswer!
+static TypeSafe.AI.Testing.TypeSafeModelFactory.RawResponse(int statusCode, string? content = null, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, string!>>? headers = null) -> TypeSafe.AI.RawResponse!
+static TypeSafe.AI.Testing.TypeSafeModelFactory.ScoreAnswer(double score, double confidence, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int, TypeSafe.AI.Entry>>! legend, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int, double>>! probabilities) -> TypeSafe.AI.ScoreAnswer!
+TypeSafe.AI.Answer
+TypeSafe.AI.Answer.Raw.get -> System.Text.Json.JsonElement
+TypeSafe.AI.AnswerSet
+TypeSafe.AI.AnswerSet.ContainsKey(string! key) -> bool
+TypeSafe.AI.AnswerSet.Count.get -> int
+TypeSafe.AI.AnswerSet.Get<TAnswer>(TypeSafe.AI.QuestionKey<TAnswer!> key) -> TAnswer!
+TypeSafe.AI.AnswerSet.GetChoice(string! name) -> TypeSafe.AI.ChoiceAnswer!
+TypeSafe.AI.AnswerSet.GetChoice<TEnum>(string! name) -> TypeSafe.AI.ChoiceAnswer<TEnum>!
+TypeSafe.AI.AnswerSet.GetEnumerator() -> System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string!, TypeSafe.AI.Answer!>>!
+TypeSafe.AI.AnswerSet.GetNoul(string! name) -> TypeSafe.AI.NoulAnswer!
+TypeSafe.AI.AnswerSet.GetScore(string! name) -> TypeSafe.AI.ScoreAnswer!
+TypeSafe.AI.AnswerSet.Keys.get -> System.Collections.Generic.IEnumerable<string!>!
+TypeSafe.AI.AnswerSet.this[string! key].get -> TypeSafe.AI.Answer!
+TypeSafe.AI.AnswerSet.TryGet<TAnswer>(TypeSafe.AI.QuestionKey<TAnswer!> key, out TAnswer? answer) -> bool
+TypeSafe.AI.AnswerSet.TryGetValue(string! key, out TypeSafe.AI.Answer! value) -> bool
+TypeSafe.AI.AnswerSet.Values.get -> System.Collections.Generic.IEnumerable<TypeSafe.AI.Answer!>!
+TypeSafe.AI.ApiConnectionException
+TypeSafe.AI.ApiConnectionException.ApiConnectionException() -> void
+TypeSafe.AI.ApiConnectionException.ApiConnectionException(string! message, System.Exception? innerException) -> void
+TypeSafe.AI.ApiConnectionException.ApiConnectionException(string! message) -> void
+TypeSafe.AI.ApiException
+TypeSafe.AI.ApiException.ApiException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.ApiException.ApiException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.ApiException.Body.get -> object?
+TypeSafe.AI.ApiException.BodyText.get -> string?
+TypeSafe.AI.ApiException.Headers.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<string!>!>!
+TypeSafe.AI.ApiException.RequestId.get -> string?
+TypeSafe.AI.ApiException.Response.get -> TypeSafe.AI.RawResponse!
+TypeSafe.AI.ApiException.StatusCode.get -> int
+TypeSafe.AI.ApiResponse<T>
+TypeSafe.AI.ApiResponse<T>.RawResponse.get -> TypeSafe.AI.RawResponse!
+TypeSafe.AI.ApiResponse<T>.RequestId.get -> string?
+TypeSafe.AI.ApiResponse<T>.Value.get -> T
+TypeSafe.AI.ApiTimeoutException
+TypeSafe.AI.ApiTimeoutException.ApiTimeoutException(System.TimeSpan timeout, System.Exception? innerException) -> void
+TypeSafe.AI.ApiTimeoutException.ApiTimeoutException(System.TimeSpan timeout) -> void
+TypeSafe.AI.ApiTimeoutException.Timeout.get -> System.TimeSpan
+TypeSafe.AI.ApiUserAbortException
+TypeSafe.AI.ApiUserAbortException.ApiUserAbortException() -> void
+TypeSafe.AI.ApiUserAbortException.ApiUserAbortException(string! message, System.Exception? innerException) -> void
+TypeSafe.AI.ApiUserAbortException.ApiUserAbortException(string! message) -> void
+TypeSafe.AI.ApiUserAbortException.ApiUserAbortException(System.Exception? innerException, System.Threading.CancellationToken cancellationToken) -> void
+TypeSafe.AI.ApiUserAbortException.CancellationToken.get -> System.Threading.CancellationToken
+TypeSafe.AI.AuthenticationException
+TypeSafe.AI.AuthenticationException.AuthenticationException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.AuthenticationException.AuthenticationException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.BadRequestException
+TypeSafe.AI.BadRequestException.BadRequestException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.BadRequestException.BadRequestException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.ChoiceAnswer
+TypeSafe.AI.ChoiceAnswer.Choice.get -> string!
+TypeSafe.AI.ChoiceAnswer.Confidence.get -> double
+TypeSafe.AI.ChoiceAnswer.Probabilities.get -> System.Collections.Generic.IReadOnlyDictionary<string!, double>!
+TypeSafe.AI.ChoiceAnswer<TEnum>
+TypeSafe.AI.ChoiceAnswer<TEnum>.ProbabilitiesByValue.get -> System.Collections.Generic.IReadOnlyDictionary<TEnum, double>!
+TypeSafe.AI.ChoiceAnswer<TEnum>.Value.get -> TEnum
+TypeSafe.AI.ChoiceCriteria
+TypeSafe.AI.ChoiceCriteria.Add(string! label, TypeSafe.AI.Entry description) -> void
+TypeSafe.AI.ChoiceCriteria.ChoiceCriteria() -> void
+TypeSafe.AI.ChoiceCriteria.Count.get -> int
+TypeSafe.AI.ChoiceCriteria.GetEnumerator() -> System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string!, TypeSafe.AI.Entry>>!
+TypeSafe.AI.ChoiceCriteria.this[int index].get -> System.Collections.Generic.KeyValuePair<string!, TypeSafe.AI.Entry>
+TypeSafe.AI.ChoiceCriteria.TryGetDescription(string! label, out TypeSafe.AI.Entry description) -> bool
+TypeSafe.AI.ChoiceQuestion
+TypeSafe.AI.ChoiceQuestion.Criteria.get -> TypeSafe.AI.ChoiceCriteria!
+TypeSafe.AI.ChoiceQuestion<TEnum>
+TypeSafe.AI.Entry
+TypeSafe.AI.Entry.AsText() -> string?
+TypeSafe.AI.Entry.Entry() -> void
+TypeSafe.AI.Entry.Equals(TypeSafe.AI.Entry other) -> bool
+TypeSafe.AI.Entry.IsOmitted.get -> bool
+TypeSafe.AI.Entry.Kind.get -> TypeSafe.AI.EntryKind
+TypeSafe.AI.Entry.ToJsonNode() -> System.Text.Json.Nodes.JsonNode?
+TypeSafe.AI.Entry.ToJsonString() -> string!
+TypeSafe.AI.EntryKind
+TypeSafe.AI.EntryKind.Array = 4 -> TypeSafe.AI.EntryKind
+TypeSafe.AI.EntryKind.Null = 1 -> TypeSafe.AI.EntryKind
+TypeSafe.AI.EntryKind.Object = 3 -> TypeSafe.AI.EntryKind
+TypeSafe.AI.EntryKind.Omitted = 0 -> TypeSafe.AI.EntryKind
+TypeSafe.AI.EntryKind.Text = 2 -> TypeSafe.AI.EntryKind
+TypeSafe.AI.IModelsClient
+TypeSafe.AI.IModelsClient.ListAsync(TypeSafe.AI.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<TypeSafe.AI.ModelCard!>!>!
+TypeSafe.AI.IModelsClient.ListWithResponseAsync(TypeSafe.AI.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TypeSafe.AI.ApiResponse<System.Collections.Generic.IReadOnlyList<TypeSafe.AI.ModelCard!>!>!>!
+TypeSafe.AI.InternalServerException
+TypeSafe.AI.InternalServerException.InternalServerException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.InternalServerException.InternalServerException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.ITypeSafeClient
+TypeSafe.AI.ITypeSafeClient.Models.get -> TypeSafe.AI.IModelsClient!
+TypeSafe.AI.ITypeSafeClient.SystemOneAsync(TypeSafe.AI.SystemOneRequest! request, TypeSafe.AI.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TypeSafe.AI.SystemOneResult!>!
+TypeSafe.AI.ITypeSafeClient.SystemOneWithResponseAsync(TypeSafe.AI.SystemOneRequest! request, TypeSafe.AI.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TypeSafe.AI.ApiResponse<TypeSafe.AI.SystemOneResult!>!>!
+TypeSafe.AI.ModelCard
+TypeSafe.AI.ModelCard.AdditionalProperties.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Text.Json.JsonElement>!
+TypeSafe.AI.ModelCard.Description.get -> string!
+TypeSafe.AI.ModelCard.Name.get -> string!
+TypeSafe.AI.ModelCard.ReleaseDate.get -> string!
+TypeSafe.AI.NotFoundException
+TypeSafe.AI.NotFoundException.NotFoundException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.NotFoundException.NotFoundException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.NoulAnswer
+TypeSafe.AI.NoulAnswer.Noul.get -> double
+TypeSafe.AI.NoulCriteria
+TypeSafe.AI.NoulCriteria.False.get -> TypeSafe.AI.Entry
+TypeSafe.AI.NoulCriteria.False.init -> void
+TypeSafe.AI.NoulCriteria.NoulCriteria() -> void
+TypeSafe.AI.NoulCriteria.True.get -> TypeSafe.AI.Entry
+TypeSafe.AI.NoulCriteria.True.init -> void
+TypeSafe.AI.NoulQuestion
+TypeSafe.AI.NoulQuestion.Criteria.get -> TypeSafe.AI.NoulCriteria?
+TypeSafe.AI.PermissionDeniedException
+TypeSafe.AI.PermissionDeniedException.PermissionDeniedException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.PermissionDeniedException.PermissionDeniedException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.Question
+TypeSafe.AI.Question.Instructions.get -> TypeSafe.AI.Entry
+TypeSafe.AI.QuestionKey<TAnswer>
+TypeSafe.AI.QuestionKey<TAnswer>.Equals(TypeSafe.AI.QuestionKey<TAnswer!> other) -> bool
+TypeSafe.AI.QuestionKey<TAnswer>.Name.get -> string!
+TypeSafe.AI.QuestionKey<TAnswer>.QuestionKey() -> void
+TypeSafe.AI.QuestionSet
+TypeSafe.AI.QuestionSet.Add(string! name, TypeSafe.AI.ChoiceQuestion! question) -> TypeSafe.AI.QuestionKey<TypeSafe.AI.ChoiceAnswer!>
+TypeSafe.AI.QuestionSet.Add(string! name, TypeSafe.AI.NoulQuestion! question) -> TypeSafe.AI.QuestionKey<TypeSafe.AI.NoulAnswer!>
+TypeSafe.AI.QuestionSet.Add(string! name, TypeSafe.AI.ScoreQuestion! question) -> TypeSafe.AI.QuestionKey<TypeSafe.AI.ScoreAnswer!>
+TypeSafe.AI.QuestionSet.Add<TEnum>(string! name, TypeSafe.AI.ChoiceQuestion<TEnum>! question) -> TypeSafe.AI.QuestionKey<TypeSafe.AI.ChoiceAnswer<TEnum>!>
+TypeSafe.AI.QuestionSet.Contains(string! name) -> bool
+TypeSafe.AI.QuestionSet.Count.get -> int
+TypeSafe.AI.QuestionSet.GetEnumerator() -> System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string!, TypeSafe.AI.Question!>>!
+TypeSafe.AI.QuestionSet.QuestionSet() -> void
+TypeSafe.AI.QuestionSet.TryGetQuestion(string! name, out TypeSafe.AI.Question? question) -> bool
+TypeSafe.AI.QuestionType
+TypeSafe.AI.QuestionType.Choice = 1 -> TypeSafe.AI.QuestionType
+TypeSafe.AI.QuestionType.Noul = 0 -> TypeSafe.AI.QuestionType
+TypeSafe.AI.QuestionType.Score = 2 -> TypeSafe.AI.QuestionType
+TypeSafe.AI.RateLimitException
+TypeSafe.AI.RateLimitException.RateLimitException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.RateLimitException.RateLimitException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.RateLimitException.RetryAfter.get -> System.TimeSpan?
+TypeSafe.AI.RawResponse
+TypeSafe.AI.RawResponse.Content.get -> System.ReadOnlyMemory<byte>
+TypeSafe.AI.RawResponse.Headers.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<string!>!>!
+TypeSafe.AI.RawResponse.ParseContentAsJson() -> System.Text.Json.JsonDocument!
+TypeSafe.AI.RawResponse.ReadContentAsString() -> string!
+TypeSafe.AI.RawResponse.RequestId.get -> string?
+TypeSafe.AI.RawResponse.StatusCode.get -> int
+TypeSafe.AI.RawResponse.TryGetHeader(string! name, out string? value) -> bool
+TypeSafe.AI.RequestOptions
+TypeSafe.AI.RequestOptions.Headers.get -> System.Collections.Generic.IDictionary<string!, string!>!
+TypeSafe.AI.RequestOptions.RequestOptions() -> void
+TypeSafe.AI.RequestOptions.RetryPolicy.get -> TypeSafe.AI.RetryPolicy?
+TypeSafe.AI.RequestOptions.RetryPolicy.set -> void
+TypeSafe.AI.RequestOptions.Timeout.get -> System.TimeSpan?
+TypeSafe.AI.RequestOptions.Timeout.set -> void
+TypeSafe.AI.RetryPolicy
+TypeSafe.AI.RetryPolicy.<Clone>$() -> TypeSafe.AI.RetryPolicy!
+TypeSafe.AI.RetryPolicy.BackoffJitter.get -> double
+TypeSafe.AI.RetryPolicy.BackoffJitter.init -> void
+TypeSafe.AI.RetryPolicy.Equals(TypeSafe.AI.RetryPolicy? other) -> bool
+TypeSafe.AI.RetryPolicy.InitialBackoff.get -> System.TimeSpan
+TypeSafe.AI.RetryPolicy.InitialBackoff.init -> void
+TypeSafe.AI.RetryPolicy.MaxBackoff.get -> System.TimeSpan
+TypeSafe.AI.RetryPolicy.MaxBackoff.init -> void
+TypeSafe.AI.RetryPolicy.MaxRetries.get -> int
+TypeSafe.AI.RetryPolicy.MaxRetries.init -> void
+TypeSafe.AI.RetryPolicy.MaxRetryAfter.get -> System.TimeSpan
+TypeSafe.AI.RetryPolicy.MaxRetryAfter.init -> void
+TypeSafe.AI.RetryPolicy.RespectRetryAfter.get -> bool
+TypeSafe.AI.RetryPolicy.RespectRetryAfter.init -> void
+TypeSafe.AI.RetryPolicy.RetryableStatusCodes.get -> System.Collections.Immutable.IImmutableSet<int>!
+TypeSafe.AI.RetryPolicy.RetryableStatusCodes.init -> void
+TypeSafe.AI.RetryPolicy.RetryOnConnectionError.get -> bool
+TypeSafe.AI.RetryPolicy.RetryOnConnectionError.init -> void
+TypeSafe.AI.RetryPolicy.RetryOnTimeout.get -> bool
+TypeSafe.AI.RetryPolicy.RetryOnTimeout.init -> void
+TypeSafe.AI.RetryPolicy.RetryPolicy() -> void
+TypeSafe.AI.ScoreAnswer
+TypeSafe.AI.ScoreAnswer.Confidence.get -> double
+TypeSafe.AI.ScoreAnswer.Legend.get -> System.Collections.Generic.IReadOnlyDictionary<int, TypeSafe.AI.Entry>!
+TypeSafe.AI.ScoreAnswer.Probabilities.get -> System.Collections.Generic.IReadOnlyDictionary<int, double>!
+TypeSafe.AI.ScoreAnswer.Score.get -> double
+TypeSafe.AI.ScoreCriteria
+TypeSafe.AI.ScoreCriteria.Count.get -> int
+TypeSafe.AI.ScoreCriteria.GetEnumerator() -> System.Collections.Generic.IEnumerator<TypeSafe.AI.Entry>!
+TypeSafe.AI.ScoreCriteria.ScoreCriteria(System.Collections.Generic.IEnumerable<TypeSafe.AI.Entry>! descriptions) -> void
+TypeSafe.AI.ScoreCriteria.this[int index].get -> TypeSafe.AI.Entry
+TypeSafe.AI.ScoreQuestion
+TypeSafe.AI.ScoreQuestion.Criteria.get -> TypeSafe.AI.ScoreCriteria!
+TypeSafe.AI.SdkInfo
+TypeSafe.AI.SystemOneRequest
+TypeSafe.AI.SystemOneRequest.AdditionalProperties.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.Nodes.JsonNode?>!
+TypeSafe.AI.SystemOneRequest.Model.get -> string?
+TypeSafe.AI.SystemOneRequest.Model.init -> void
+TypeSafe.AI.SystemOneRequest.Questions.get -> TypeSafe.AI.QuestionSet!
+TypeSafe.AI.SystemOneRequest.State.get -> TypeSafe.AI.Entry
+TypeSafe.AI.SystemOneRequest.SystemOneRequest(TypeSafe.AI.Entry state, TypeSafe.AI.QuestionSet! questions) -> void
+TypeSafe.AI.SystemOneResult
+TypeSafe.AI.SystemOneResult.Answers.get -> TypeSafe.AI.AnswerSet!
+TypeSafe.AI.SystemOneResult.Model.get -> string!
+TypeSafe.AI.SystemOneResult.Usage.get -> TypeSafe.AI.Usage!
+TypeSafe.AI.Testing.TypeSafeModelFactory
+TypeSafe.AI.TypeSafeClient
+TypeSafe.AI.TypeSafeClient.BaseUri.get -> System.Uri!
+TypeSafe.AI.TypeSafeClient.DefaultHeaders.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+TypeSafe.AI.TypeSafeClient.DefaultModel.get -> string!
+TypeSafe.AI.TypeSafeClient.Dispose() -> void
+TypeSafe.AI.TypeSafeClient.LogLevel.get -> TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.TypeSafeClient.Models.get -> TypeSafe.AI.IModelsClient!
+TypeSafe.AI.TypeSafeClient.RetryPolicy.get -> TypeSafe.AI.RetryPolicy!
+TypeSafe.AI.TypeSafeClient.SystemOneAsync(TypeSafe.AI.SystemOneRequest! request, TypeSafe.AI.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TypeSafe.AI.SystemOneResult!>!
+TypeSafe.AI.TypeSafeClient.SystemOneWithResponseAsync(TypeSafe.AI.SystemOneRequest! request, TypeSafe.AI.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TypeSafe.AI.ApiResponse<TypeSafe.AI.SystemOneResult!>!>!
+TypeSafe.AI.TypeSafeClient.Timeout.get -> System.TimeSpan
+TypeSafe.AI.TypeSafeClient.TypeSafeClient() -> void
+TypeSafe.AI.TypeSafeClient.TypeSafeClient(TypeSafe.AI.TypeSafeClientOptions! options, System.Net.Http.HttpClient! httpClient) -> void
+TypeSafe.AI.TypeSafeClient.TypeSafeClient(TypeSafe.AI.TypeSafeClientOptions! options) -> void
+TypeSafe.AI.TypeSafeClientOptions
+TypeSafe.AI.TypeSafeClientOptions.ApiKey.get -> string?
+TypeSafe.AI.TypeSafeClientOptions.ApiKey.set -> void
+TypeSafe.AI.TypeSafeClientOptions.BaseUri.get -> System.Uri?
+TypeSafe.AI.TypeSafeClientOptions.BaseUri.set -> void
+TypeSafe.AI.TypeSafeClientOptions.DangerouslyAllowBrowser.get -> bool
+TypeSafe.AI.TypeSafeClientOptions.DangerouslyAllowBrowser.set -> void
+TypeSafe.AI.TypeSafeClientOptions.DefaultHeaders.get -> System.Collections.Generic.IDictionary<string!, string!>!
+TypeSafe.AI.TypeSafeClientOptions.DefaultModel.get -> string?
+TypeSafe.AI.TypeSafeClientOptions.DefaultModel.set -> void
+TypeSafe.AI.TypeSafeClientOptions.Logger.get -> Microsoft.Extensions.Logging.ILogger?
+TypeSafe.AI.TypeSafeClientOptions.Logger.set -> void
+TypeSafe.AI.TypeSafeClientOptions.LoggerFactory.get -> Microsoft.Extensions.Logging.ILoggerFactory?
+TypeSafe.AI.TypeSafeClientOptions.LoggerFactory.set -> void
+TypeSafe.AI.TypeSafeClientOptions.LogLevel.get -> TypeSafe.AI.TypeSafeLogLevel?
+TypeSafe.AI.TypeSafeClientOptions.LogLevel.set -> void
+TypeSafe.AI.TypeSafeClientOptions.RetryPolicy.get -> TypeSafe.AI.RetryPolicy?
+TypeSafe.AI.TypeSafeClientOptions.RetryPolicy.set -> void
+TypeSafe.AI.TypeSafeClientOptions.Timeout.get -> System.TimeSpan?
+TypeSafe.AI.TypeSafeClientOptions.Timeout.set -> void
+TypeSafe.AI.TypeSafeClientOptions.TimeProvider.get -> System.TimeProvider?
+TypeSafe.AI.TypeSafeClientOptions.TimeProvider.set -> void
+TypeSafe.AI.TypeSafeClientOptions.TypeSafeClientOptions() -> void
+TypeSafe.AI.TypeSafeEnvironmentVariables
+TypeSafe.AI.TypeSafeException
+TypeSafe.AI.TypeSafeException.TypeSafeException() -> void
+TypeSafe.AI.TypeSafeException.TypeSafeException(string! message, System.Exception? innerException) -> void
+TypeSafe.AI.TypeSafeException.TypeSafeException(string! message) -> void
+TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.TypeSafeLogLevel.Debug = 0 -> TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.TypeSafeLogLevel.Error = 3 -> TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.TypeSafeLogLevel.Info = 1 -> TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.TypeSafeLogLevel.Off = 4 -> TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.TypeSafeLogLevel.Warn = 2 -> TypeSafe.AI.TypeSafeLogLevel
+TypeSafe.AI.UnknownAnswer
+TypeSafe.AI.UnprocessableEntityException
+TypeSafe.AI.UnprocessableEntityException.UnprocessableEntityException(string! message, TypeSafe.AI.RawResponse! response, System.Exception? innerException) -> void
+TypeSafe.AI.UnprocessableEntityException.UnprocessableEntityException(string! message, TypeSafe.AI.RawResponse! response) -> void
+TypeSafe.AI.Usage
+TypeSafe.AI.Usage.InputTokens.get -> long
+TypeSafe.AI.Usage.OutputTokens.get -> long
+static TypeSafe.AI.Testing.TypeSafeModelFactory.SystemOneResult(string! model, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, TypeSafe.AI.Answer!>>! answers, long inputTokens = 0, long outputTokens = 0) -> TypeSafe.AI.SystemOneResult!
