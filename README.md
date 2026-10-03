@@ -220,6 +220,17 @@ Versions follow [SemVer](https://semver.org/). Each release notes the upstream J
 (`SdkInfo.UpstreamVersion`); see the [CHANGELOG](CHANGELOG.md). Requests identify themselves with
 `User-Agent: typesafe-sdk-dotnet/<version>`.
 
+### Publishing setup
+
+The publish workflow runs on `v*` tags and uses NuGet trusted publishing (OIDC). Before publishing:
+
+- Set the `NUGET_USER` Actions variable in the GitHub `nuget` environment or repository settings to the NuGet
+  username used by the trusted publishing policy. An existing `NUGET_USER` secret is supported as a fallback.
+- Configure a trusted publishing policy on NuGet.org for that user, repository `BareIQ/Jev.TypeSafe.AI`,
+  workflow `publish.yml`, and environment `nuget`.
+
+No long-lived NuGet API key is required. A missing username fails validation before building or authenticating.
+
 ## License
 
 [MIT](LICENSE). See [NOTICE.md](NOTICE.md) for upstream attribution.
